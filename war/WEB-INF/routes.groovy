@@ -1,0 +1,5 @@
+get "/gist/list", forward: "/WEB-INF/groovy/gist/list.groovy"
+get "/gist/@extension/list", forward: "/WEB-INF/groovy/gist/list.groovy?extension=@extension"
+get "/gist/@extension/atom", forward: "/WEB-INF/groovy/gist/atom.groovy?extension=@extension"
+get "/extensions", forward: "/WEB-INF/groovy/extension/list.groovy"
+get "/extensions/index/@index", forward: "/WEB-INF/groovy/extension/list.groovy?index=@index"

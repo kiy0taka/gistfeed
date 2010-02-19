@@ -1,0 +1,44 @@
+body {
+	font-family: Arial;
+	margin: 0px;
+}
+
+h1 {
+	color: #D33381;
+    font-size: 40px;
+    margin: 0px 0px 10px 0px;
+    padding: 15px 0px 0px 20px;
+    border-width: 0px 0px 3px 0px;
+    border-style: dotted;
+    border-color: black;
+}
+
+hr {
+    border-width: 3px 0px 0px 0px;
+    border-style: dotted;
+    border-color: black;
+    margin-left: 6px;
+}
+
+a {
+    color:#4183C4;
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+#header {
+    /*
+    background: url("/images/gray-shade.png") repeat-x scroll center bottom red;
+    */
+}
+
+ul {
+    margin: 0px;
+}
+
+img {
+    border: 0px;
+}

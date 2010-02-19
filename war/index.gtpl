@@ -1,0 +1,1 @@
+<% forward '/extension/list.groovy' %>
