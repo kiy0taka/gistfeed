@@ -9,6 +9,9 @@
 <% if (params.extension) { %>
 <link rel="alternate" type="application/atom+xml" href="/gist/${params.extension}/atom" title="Gist Feed - ${params.extension}">
 <% } %>
+<% if (params.q) { %>
+<link rel="alternate" type="application/atom+xml" href="/gist/atom?q=${params.q}" title="Gist Feed - ${params.q}">
+<% } %>
 </head>
 <body>
 <% include '/WEB-INF/includes/header.gtpl' %>

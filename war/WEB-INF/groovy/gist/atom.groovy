@@ -6,20 +6,20 @@ import groovy.xml.MarkupBuilder
 import java.text.SimpleDateFormat
 
 def isoTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-def gists = memcache[params.extension]
+def gists = memcache[params.extension ?: params.q]
 if (gists == null) {
-    System.out.println "Missing from memcache. [${params.extension}]"
-    gists = memcache[params.extension] = datastore.prepare(new Query('gist')
+    System.out.println "Missing from memcache. [${params.extension ?: params.q}]"
+    gists = memcache[params.extension ?: params.q] = datastore.prepare(new Query('gist')
         .addSort('dateCreated', DESCENDING)
-        .addFilter('extensions', EQUAL, params.extension)).asList(withLimit(20))
+        .addFilter(params.extension ? 'extensions' : 'files', EQUAL, params.extension ?: params.q)).asList(withLimit(20))
 }
 def dateUpdated = (gists.max { it.dateCreated } ?: [dateCreated:new Date()]).dateCreated
 
 response.contentType = "application/atom+xml;charset=utf-8"
 
 new MarkupBuilder(out).feed(xmlns: "http://www.w3.org/2005/Atom") {
-    title "Gist Feed - ${params.extension}"
-    link href: "http://gistfeed.appspot.com/gist/${params.extension}/list", rel: "self"
+    title "Gist Feed - ${params.extension ?: params.q}"
+    link href: (params.extension ? "http://gistfeed.appspot.com/gist/${params.extension}/list" : "http://gistfeed.appspot.com/gist/list?q=${params.q}"), rel: "self"
     updated isoTime.format(dateUpdated)
     author {
         name "Kiyotaka Oku"

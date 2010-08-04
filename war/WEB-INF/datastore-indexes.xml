@@ -2,5 +2,6 @@
     <datastore-index kind="gist" ancestor="false" source="auto">
         <property name="extensions" direction="asc"/>
         <property name="dateCreated" direction="desc"/>
+        <property name="files" direction="asc"/>
     </datastore-index>
 </datastore-indexes>

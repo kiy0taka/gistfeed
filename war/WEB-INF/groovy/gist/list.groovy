@@ -7,6 +7,9 @@ def query = new Query('gist')
 if (params.extension) {
     query.addFilter('extensions', EQUAL, params.extension)
 }
+if (params.q) {
+    query.addFilter('files', EQUAL, params.q)
+}
 if (params.next) {
     query.addFilter('gistNo', LESS_THAN_OR_EQUAL, params.next.toLong() - 1)
     query.addSort('gistNo', DESCENDING)

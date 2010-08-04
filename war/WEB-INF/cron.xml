@@ -2,10 +2,10 @@
 <cronentries>
   <cron>
     <url>/task/crawl.groovy</url>
-    <schedule>every 5 minutes</schedule>
+    <schedule>every 1 minutes</schedule>
   </cron>
   <cron>
     <url>/task/atom.groovy</url>
-    <schedule>every 5 minutes</schedule>
+    <schedule>every 1 minutes</schedule>
   </cron>
 </cronentries>
