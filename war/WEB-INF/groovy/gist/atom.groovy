@@ -6,10 +6,10 @@ import groovy.xml.MarkupBuilder
 import java.text.SimpleDateFormat
 
 def isoTime = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US)
-def gists = memcache[params.extension ?: params.q]
+def gists = memcache[params.extension ?: "q=${params.q}"]
 if (gists == null) {
     System.out.println "Missing from memcache. [${params.extension ?: params.q}]"
-    gists = memcache[params.extension ?: params.q] = datastore.prepare(new Query('gist')
+    gists = memcache[params.extension ?: "q=${params.q}"] = datastore.prepare(new Query('gist')
         .addSort('dateCreated', DESCENDING)
         .addFilter(params.extension ? 'extensions' : 'files', EQUAL, params.extension ?: params.q)).asList(withLimit(20))
 }

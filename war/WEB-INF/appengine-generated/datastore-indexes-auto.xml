@@ -1,4 +1,11 @@
-<!-- Indices written at Wed, 4 Aug 2010 11:40:36 UTC -->
+<!-- Indices written at Thu, 5 Aug 2010 14:48:40 UTC -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 8 times in query history -->
+    <datastore-index kind="gist" ancestor="false" source="auto">
+        <property name="extensions" direction="asc"/>
+        <property name="gistNo" direction="desc"/>
+    </datastore-index>
+
+</datastore-indexes>

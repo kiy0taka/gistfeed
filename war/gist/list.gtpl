@@ -16,6 +16,7 @@
 <body>
 <% include '/WEB-INF/includes/header.gtpl' %>
 
+<% if (request.gists) { %>
 <div style="width: 600px; margin-left: 20px; border:3px solid silver" class="autopagerize_page_element">
 <% request.gists.each { gist -> %>
 <div style='border-top: 1px solid silver; margin-top:-3px;'>
@@ -33,14 +34,17 @@
 </div>
 <% } %>
 </div>
+<% } else { %>
+ <p style="margin:5px 0px 0px 40px">No Gists.</p>
+<% } %>
 <div style="margin:10px" class="autopagerize_insert_before">
 <% if (request.hasPrev) { %>
-<a href="/gist${params.extension?"/"+params.extension:""}/list?prev=${request.gists[0].gistNo}">« Prev</a>
+<a href="/gist${params.extension?"/"+params.extension:""}/list?${params.q?"q="+params.q+"&":""}prev=${request.gists[0].gistNo}">« Prev</a>
 <% } else { %>
 <span style="color:silver">« Prev</span>
 <% } %>
 <% if (request.hasNext) { %>
-<a href="/gist${params.extension?"/"+params.extension:""}/list?next=${request.gists[-1].gistNo}" rel="next">Next »</a>
+<a href="/gist${params.extension?"/"+params.extension:""}/list?${params.q?"q="+params.q+"&":""}next=${request.gists[-1].gistNo}" rel="next">Next »</a>
 <% } else { %>
 <span style="color:silver">Next »</span>
 <% } %>
